@@ -1,0 +1,27 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    font-family: var(--font);
+    padding-top: 80px;
+    text-rendering: geometricPrecision;
+    backface-visibility: hidden;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+h2 {
+    font-weight: 500;
+}

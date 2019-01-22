@@ -1,0 +1,10 @@
+:root {
+    font-size: 16px;
+    
+    --primary: #fff;
+    --field: #999;
+    --item: #444;
+    --item-dark: #222;
+    --item-light: #333;
+    --completed: #7FF693;
+}
