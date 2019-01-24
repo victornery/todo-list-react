@@ -1,0 +1,28 @@
+.item {
+    background-color: var(--item-light);
+    color: #fff;
+    padding: 14px 20px;
+    border-radius: 8px;
+    margin: 10px 0;
+    position: relative;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: var(--radio)
+}
+
+.item::before,
+.completed::before {
+    content: '';
+    width: 13px;
+    height: 13px;
+    background: var(--radio);
+    display: inline-block;
+    margin-right: 15px;
+    border-radius: 2px;
+}
+
+.completed::before {
+    background: var(--completed);
+}

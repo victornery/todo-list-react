@@ -1,10 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+
 :root {
     font-size: 16px;
-    
+    --font: 'Roboto';
     --primary: #fff;
-    --field: #999;
-    --item: #444;
+    --radio: #999;
+
+    --item: #333;
     --item-dark: #222;
-    --item-light: #333;
+    --item-light: #444;
+
     --completed: #7FF693;
 }

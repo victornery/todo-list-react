@@ -8,10 +8,11 @@
 }
 
 body {
-    font-family: var(--font);
-    padding-top: 80px;
-    text-rendering: geometricPrecision;
+    background-color: var(--item);
     backface-visibility: hidden;
+    color: #fff;
+    font-family: var(--font);
+    text-rendering: geometricPrecision;
 }
 
 ul {

@@ -7,6 +7,11 @@ module.exports = {
         path: path.join(__dirname, 'build'),
         filename: 'bundle.js'
     },
+    devServer: {
+        contentBase: path.join(__dirname, 'src'),
+        compress: true,
+        port: 9000
+    },
     resolve: {
         alias: {
             components: path.resolve(__dirname, 'src/components/'),
@@ -19,7 +24,10 @@ module.exports = {
                 test: /\.(js)$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader'
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-react']
+                    }
                 }
             },
             {
@@ -37,7 +45,7 @@ module.exports = {
                         importLoaders: 1,
                         modules: true,
                         sourceMap: true,
-                        localIdentName: 'next-[local]___[hash:base64:5]'
+                        localIdentName: '[local]___[hash:base64:5]'
                     }
                 }]
             }
@@ -45,7 +53,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.join(__dirname, 'src', 'index.pug'),
+            template: path.join(__dirname, 'src','index.pug'),
             minify: true,
             hash: true
         })
