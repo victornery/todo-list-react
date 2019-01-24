@@ -1,3 +1,14 @@
 .button {
     display: inline-block;
+    background: var(--item-light);
+    padding: 10px;
+    margin: 0 5px;
+    border-radius: 6px;
+    color: var(--radio);
+}
+
+.actived {
+    background: var(--completed);
+    color: var(--item);
+    font-weight: 600;
 }

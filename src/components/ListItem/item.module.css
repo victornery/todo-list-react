@@ -9,7 +9,7 @@
 
 .completed {
     text-decoration: line-through;
-    color: var(--radio)
+    color: var(--radio);
 }
 
 .item::before,
@@ -25,4 +25,10 @@
 
 .completed::before {
     background: var(--completed);
+}
+
+.item img {
+    width: 15px;
+    height: 15px;
+    float: right;
 }

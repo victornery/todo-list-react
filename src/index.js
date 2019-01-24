@@ -5,7 +5,7 @@ import AppContext from 'utils/context'
 import '../public/css/all.css' // CSS Commons
 
 class App extends Component {
-    constructor(props) {
+    constructor() {
         super()
 
         this.state = {
@@ -30,20 +30,23 @@ class App extends Component {
                     "todo": "Comprar pão",
                     "completed": true
                 }
-            ]
+            ],
+            data: '',
+            filter: 'all'
         }
     }
 
     render() {
-        const { list } = this.state
-        
+        const { list, data, filter } = this.state
+
         const addToState = (event) => {
-            const value = event.target.value
-            console.log(event)
-        
-            event.key === "Enter" && 
-            this.setState((prevState) => { 
-                
+            event.preventDefault()
+            const value = data
+
+            console.log(event.target.data)
+
+            this.setState((prevState) => {
+
                 let newList = [
                     ...prevState.list,
                     {
@@ -54,17 +57,77 @@ class App extends Component {
 
                 return { list: newList }
             })
+
+            this.setState({ data: '' })
         }
 
-        const completedTodo = (event) => {
+        const completeTodo = (newIndex) => {
+
+            this.setState(() => {
+                return {
+                    list: this.state.list.map((val, index) => {
+
+                        if (newIndex === index) {
+                            return {
+                                todo: val.todo,
+                                completed: !val.completed
+                            }
+                        } else {
+                            return {
+                                todo: val.todo,
+                                completed: val.completed
+                            }
+                        }
+
+                    })
+                }
+            })
+
+
+        }
+
+        const changeTodo = (event) => {
+            this.setState({ data: event.target.value })
+        }
+
+        const removeTodo = (event) => {
             console.log(event)
+        }
+
+        const switchFilter = (event) => {
+            const newFilter = event.target.dataset.filter
+            filter !== newFilter && this.setState({ filter: newFilter })
+        }
+
+        const filterTodo = (type, options) => {
+            switch (type) {
+                case 'all':
+                    return options
+                    break;
+                case 'pending':
+                    return options.completed === false
+                    break;
+
+                case 'solved':
+                    return options.completed !== false
+                    break;
+                default:
+                    return options
+                    break
+            }
         }
 
         return (
             <AppContext.Provider value={{
                 list,
                 addToState,
-                completedTodo
+                completeTodo,
+                changeTodo,
+                removeTodo,
+                filter,
+                filterTodo,
+                switchFilter,
+                data
             }}>
                 <Home />
             </AppContext.Provider>
