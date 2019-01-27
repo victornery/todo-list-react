@@ -16,19 +16,21 @@ class Home extends Component {
                 <h1>TODO List</h1>
 
                 <AppContext.Consumer>
-                    {context => <AddItem onSubmit={context.addToState} onChange={context.changeTodo} />}
-                </AppContext.Consumer>
+                {context => {
 
-                <AppContext.Consumer>
-                    {context => {
-                        const items = context.list
-                        const filteredItems = items.filter(options => context.filterTodo(context.filter, options))
-                        return <List items={filteredItems} />
-                    }
-                    }
-                </AppContext.Consumer>
-                <AppContext.Consumer>
-                    {context => <FilterItems onClick={context.switchFilter} />}
+                    const filteredItems = context.list.filter(
+                        options => context.filterTodo(context.filter, options)
+                    )
+
+                    return (
+                        <Fragment>
+                            <AddItem onSubmit={context.addToState} onChange={context.changeTodo} />
+                            <List items={filteredItems} />
+                            <FilterItems onClick={context.switchFilter} />
+                        </Fragment>
+                    )
+
+                }}
                 </AppContext.Consumer>
             </main>
         )
